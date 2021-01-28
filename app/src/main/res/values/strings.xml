@@ -1,0 +1,36 @@
+<resources>
+
+
+    <!--  APP  -->
+    <string name="app_name">ComicHub</string>
+
+    <!--  MENUS  -->
+    <string name="menu_home">Characters</string>
+    <string name="menu_comics">Comics</string>
+    <string name="menu_stories">Stories</string>
+    <string name="menu_series">Series</string>
+    <string name="menu_creator">Creators</string>
+    <string name="menu_event">Events</string>
+    <string name="menu_about">About App</string>
+    <string name="menu_credit">Credits</string>
+
+
+    <!--  TITLES  -->
+    <string name="title_home">Home</string>
+    <string name="title_comics">Comic</string>
+    <string name="title_stories">Stories</string>
+    <string name="title_series">Series</string>
+    <string name="title_creators">Creators</string>
+    <string name="title_events">Events</string>
+    <string name="title_about">About App</string>
+    <string name="title_credit">Credits</string>
+    <string name="nav_header_desc">Resource Source Image</string>
+    <string name="nav_header_subtitle">For The Love of Comic.</string>
+    <string name="item_image">Item Image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  MENUS  -->
+
+
+</resources>

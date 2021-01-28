@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_characters">
+
+    <fragment
+        android:id="@+id/nav_characters"
+        android:name="com.example.comichub.fragments.CharacterFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_comics"
+        android:name="com.example.comichub.fragments.ComicsFragment"
+        android:label="@string/title_comics"
+        tools:layout="@layout/fragment_comics" />
+
+    <fragment
+        android:id="@+id/nav_stories"
+        android:name="com.example.comichub.fragments.StoriesFragment"
+        android:label="@string/title_stories"
+        tools:layout="@layout/fragment_stories" />
+
+    <fragment
+        android:id="@+id/nav_series"
+        android:name="com.example.comichub.fragments.SeriesFragment"
+        android:label="@string/title_series"
+        tools:layout="@layout/fragment_series" />
+
+</navigation>
