@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comichub.R;
 import com.example.comichub.adapter.GridAdapter;
 import com.example.comichub.model.ApiResponse;
+import com.example.comichub.model.ResponseData;
 import com.example.comichub.model.characters.Character;
 import com.example.comichub.model.utils.Utils;
 import com.example.comichub.service.APIClient;
@@ -32,25 +33,26 @@ import retrofit2.Response;
 public class CharacterFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private List<Character> characters;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        List<Character> characters = new ArrayList<>();
 
         recyclerView = root.findViewById(R.id.recycler_view);
 
-        recyclerView.setAdapter(new GridAdapter(this, characters));
         HubAPIService apiService = APIClient.getClient().create(HubAPIService.class);
         Map<String, String> apiQueryOptions = Utils.getQueryParam();
 
-        int characterId = 1011334;
-        Call<ApiResponse<Character>> characterCall = apiService.getCharacterById(characterId, apiQueryOptions);
+        Call<ApiResponse<Character>> getCharactersCall = apiService.getCharacters(apiQueryOptions);
 
-        characterCall.enqueue(new Callback<ApiResponse<Character>>() {
+        getCharactersCall.enqueue(new Callback<ApiResponse<Character>>() {
             @Override
             public void onResponse(@NotNull Call<ApiResponse<Character>> call, @NotNull Response<ApiResponse<Character>> response) {
                 ApiResponse<Character> apiResponse = response.body();
+                ResponseData<Character> data = apiResponse.getData();
+                characters = data.getResults();
+                recyclerView.setAdapter(new GridAdapter(new CharacterFragment(), characters));
             }
 
             @Override

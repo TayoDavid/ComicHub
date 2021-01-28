@@ -15,7 +15,7 @@ import retrofit2.http.QueryMap;
 public interface HubAPIService {
 
     @GET("/v1/public/characters")
-    Call<List<Character>> getCharacters(@QueryMap Map<String, String> options);
+    Call<ApiResponse<Character>> getCharacters(@QueryMap Map<String, String> options);
 
     @GET("/v1/public/characters/{characterId}")
     Call<ApiResponse<Character>> getCharacterById(@Path("characterId") int id, @QueryMap Map<String, String> options);

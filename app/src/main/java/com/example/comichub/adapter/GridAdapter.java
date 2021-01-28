@@ -1,6 +1,7 @@
 package com.example.comichub.adapter;
 
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,12 +40,11 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ResourceViewHo
         void onItemClicked(View view, int adapterPosition);
     }
 
-    private final RequestManager requestManager;
+//    private final RequestManager requestManager;
     private final ViewHolderListener viewHolderListener;
     private final List<Character> characters;
 
     public GridAdapter(Fragment fragment, List<Character> characters) {
-        this.requestManager = Glide.with(fragment);
         this.viewHolderListener = new ViewHolderListenerImpl(fragment);
         this.characters = characters;
     }
@@ -52,6 +52,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ResourceViewHo
     @NonNull
     @Override
     public ResourceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        RequestManager requestManager = Glide.with(parent);
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_card_view, parent, false);
 
@@ -60,7 +61,10 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ResourceViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ResourceViewHolder holder, int position) {
-
+        String characterName = characters.get(position).getName();
+        String imageSrc = characters.get(position).getThumbnail().getPath();
+        holder.image.setImageURI(Uri.parse(imageSrc));
+        holder.resourceName.setText(characterName);
     }
 
     @Override
@@ -68,7 +72,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ResourceViewHo
         return 0;
     }
 
-    static class ResourceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ResourceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, com.example.comichub.adapter.ResourceViewHolder {
 
         private final ImageView image;
         private final TextView resourceName;
