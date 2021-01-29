@@ -125,7 +125,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ResourceViewHo
         }
     }
 
-    private static class ViewHolderListenerImpl implements ViewHolderListener {
+    public static class ViewHolderListenerImpl implements ViewHolderListener {
 
         private final Fragment fragment;
         private final AtomicBoolean enterTransitionStarted;
