@@ -18,6 +18,15 @@ public class ResponseData<T> {
     @SerializedName("limit")
     @Expose
     private int limit;
+
+    public List<T> getResults() {
+        return results;
+    }
+
+    public void setResults(List<T> results) {
+        this.results = results;
+    }
+
     @SerializedName("total")
     @Expose
     private int total;
