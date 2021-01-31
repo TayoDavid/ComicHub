@@ -1,5 +1,8 @@
 package com.example.comichub.model.characters;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.comichub.model.utils.ImageThumbnail;
 import com.example.comichub.model.utils.ResourceList;
 import com.example.comichub.model.utils.StorySummary;
@@ -15,100 +18,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Character {
+public class Character implements Parcelable {
 
     @SerializedName("id")
     @Expose
     private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getModified() {
-        return modified;
-    }
-
-    public void setModified(String modified) {
-        this.modified = modified;
-    }
-
-    public String getResourceURI() {
-        return resourceURI;
-    }
-
-    public void setResourceURI(String resourceURI) {
-        this.resourceURI = resourceURI;
-    }
-
-    public List<Url> getUrls() {
-        return urls;
-    }
-
-    public void setUrls(List<Url> urls) {
-        this.urls = urls;
-    }
-
-    public ImageThumbnail getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(ImageThumbnail thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
-    public ResourceList<Summary> getComics() {
-        return comics;
-    }
-
-    public void setComics(ResourceList<Summary> comics) {
-        this.comics = comics;
-    }
-
-    public ResourceList<StorySummary> getStories() {
-        return stories;
-    }
-
-    public void setStories(ResourceList<StorySummary> stories) {
-        this.stories = stories;
-    }
-
-    public ResourceList<Summary> getEvents() {
-        return events;
-    }
-
-    public void setEvents(ResourceList<Summary> events) {
-        this.events = events;
-    }
-
-    public ResourceList<Summary> getSeries() {
-        return series;
-    }
-
-    public void setSeries(ResourceList<Summary> series) {
-        this.series = series;
-    }
-
     @SerializedName("name")
     @Expose
     private String name;
@@ -140,4 +54,47 @@ public class Character {
     @Expose
     private ResourceList<Summary>series;
 
+    protected Character(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        modified = in.readString();
+        resourceURI = in.readString();
+        thumbnail = in.readParcelable(ImageThumbnail.class.getClassLoader());
+        comics = in.readParcelable(ResourceList.class.getClassLoader());
+        stories = in.readParcelable(ResourceList.class.getClassLoader());
+        events = in.readParcelable(ResourceList.class.getClassLoader());
+        series = in.readParcelable(ResourceList.class.getClassLoader());
+    }
+
+    public static final Creator<Character> CREATOR = new Creator<Character>() {
+        @Override
+        public Character createFromParcel(Parcel in) {
+            return new Character(in);
+        }
+
+        @Override
+        public Character[] newArray(int size) {
+            return new Character[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(modified);
+        dest.writeString(resourceURI);
+        dest.writeParcelable(thumbnail, flags);
+        dest.writeParcelable(comics, flags);
+        dest.writeParcelable(stories, flags);
+        dest.writeParcelable(events, flags);
+        dest.writeParcelable(series, flags);
+    }
 }

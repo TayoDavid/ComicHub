@@ -14,5 +14,6 @@
     <color name="bg_color_variant">#4B494C</color>
     <color name="bg_list_item">#F8F6F6</color>
     <color name="bg_fragment">#FFFFFF</color>
+    <color name="teal_200_40p">#6603DAC5</color>
 
 </resources>

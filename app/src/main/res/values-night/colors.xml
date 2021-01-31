@@ -6,8 +6,9 @@
     <color name="purple_500">#D86BF6</color>
     <color name="purple_700">#6E0187</color>
     <color name="teal_200">#AC59BF</color>
+    <color name="teal_200_40p">#66AC59BF</color>
     <color name="teal_700">#702485</color>
-<!--    <color name="teal_700">#</color>-->
+    <!--    <color name="teal_700">#</color>-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_color_1">#334B494C</color>

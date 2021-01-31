@@ -17,6 +17,6 @@ public class ComicDate {
     private String type;
     @SerializedName("date")
     @Expose
-    private LocalDate date;
+    private String date;
 
 }
