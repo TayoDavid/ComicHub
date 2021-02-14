@@ -28,6 +28,7 @@ import com.example.comichub.service.HubAPIService;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,7 @@ import retrofit2.Response;
 
 public class ComicsFragment extends Fragment implements OnItemClickListener<Comic> {
 
-    private final List<Comic> comics = null;
+    private final List<Comic> comics = new ArrayList<>();
     private ComicsAdapter adapter;
     private ProgressBar progressBar;
 

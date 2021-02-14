@@ -24,6 +24,7 @@ import com.example.comichub.service.HubAPIService;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ import retrofit2.Response;
 
 public class CharacterFragment extends Fragment implements OnItemClickListener<Character> {
 
-    private final List<Character> characters = null;
+    private final List<Character> characters = new ArrayList<>();
     CustomGridAdapter adapter;
     RecyclerView recyclerView;
     ProgressBar progressBar;
